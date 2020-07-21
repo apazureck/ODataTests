@@ -15,11 +15,11 @@ namespace ODataFunctions.Controllers
         private static readonly List<Student> students = new List<Student>()
         {
             new Student(){Id = Guid.NewGuid(), Name = "Angela Anaconda", Score = 1 },
-            new Student(){Id = Guid.NewGuid(), Name = "Berta Bresley", Score = 2 },
-            new Student(){Id = Guid.NewGuid(), Name = "Caesar Aiago", Score = 3 },
-            new Student(){Id = Guid.NewGuid(), Name = "Donny Denver", Score = 4 },
-            new Student(){Id = Guid.NewGuid(), Name = "Esther Ebblebrew", Score = 5 },
-            new Student(){Id = Guid.NewGuid(), Name = "Frank Footlong", Score = 6 }
+            new Student(){Id = Guid.NewGuid(), Name = "Berta Bresley", Score = 4 },
+            new Student(){Id = Guid.NewGuid(), Name = "Caesar Aiago", Score = 6 },
+            new Student(){Id = Guid.NewGuid(), Name = "Donny Denver", Score = 2 },
+            new Student(){Id = Guid.NewGuid(), Name = "Esther Ebblebrew", Score = 3 },
+            new Student(){Id = Guid.NewGuid(), Name = "Frank Footlong", Score = 5 }
         };
 
         private static readonly List<Student> teachersPets = students.Where(s => s.Score > 4).ToList();
@@ -44,6 +44,7 @@ namespace ODataFunctions.Controllers
         }
 
         [HttpGet]
+        [EnableQuery]
         public IQueryable<Student> TeachersPets()
         {
             return teachersPets.AsQueryable();
